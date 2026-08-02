@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  color:#00ff00;
+  font-family:monospace;
+  overflow:hidden;
+}
+
+#terminal {
+  padding:15px;
+  height:100%;
+  box-sizing:border-box;
+  font-size:15px;
+}
+
+.line {
+  margin-bottom:5px;
+}
+
+.cursor {
+  display:inline-block;
+  width:10px;
+  height:18px;
+  background:#00ff00;
+  animation:blink .7s infinite;
+}
+
+@keyframes blink {
+  50% {opacity:0;}
+}
+
+#final {
+  display:none;
+  text-align:center;
+  color:#ffff00;
+  font-size:28px;
+  padding-top:100px;
+}
+
+.warning {
+  color:red;
+  text-align:center;
+  font-size:28px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="terminal">
+<div class="warning">⚠ SYSTEM BREACH ⚠</div>
+<br>
+</div>
+
+<div id="final">
+😂 YOU GOT PRANKED<br><br>
+🐒 HACKED BY TARZAN 🐒<br><br>
+Your phone is fine.
+</div>
+
+
+<script>
+
+let terminal = document.getElementById("terminal");
+
+let fakeLines = [
+"Initializing secure terminal...",
+"Loading encryption modules...",
+"Checking network protocols...",
+"Starting remote simulation...",
+"Generating access sequence...",
+"Loading system files...",
+"Scanning directories...",
+"Running security analysis...",
+"Decrypting data stream...",
+"Bypassing firewall simulation...",
+"Launching TARZAN.EXE...",
+"Downloading banana_protocol.dll...",
+"Access granted (simulation)",
+"System override complete..."
+];
+
+let count = 0;
+
+function addLine(){
+
+let line = document.createElement("div");
+line.className="line";
+
+let randomCode = Math.random().toString(36).substring(2,18);
+
+line.innerHTML =
+"> " + 
+(fakeLines[count % fakeLines.length]) +
+" [" + randomCode + "]";
+
+terminal.appendChild(line);
+
+terminal.scrollTop = terminal.scrollHeight;
+
+count++;
+
+if(count < 35){
+setTimeout(addLine,300);
+}
+else{
+setTimeout(()=>{
+terminal.style.display="none";
+document.getElementById("final").style.display="block";
+},2000);
+}
+
+}
+
+setInterval(addLine,300);
+
+</script>
+
+</body>
+</html>
